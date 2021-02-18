@@ -74,8 +74,9 @@ export default {
   },
   sockets: {
     connect () {
-      console.log('LOG')
+      console.log('Hello User')
       console.log(this.$socket.id)
+      this.$store.dispatch('setUserId', this.$socket.id)
     }
   },
   watch: {
