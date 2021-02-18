@@ -14,7 +14,9 @@ export default new Vuex.Store({
       team2Ready: false,
       user2: '',
       point2: 0,
-      gameState: false
+      gameState: false,
+      userId: '',
+      team: ''
     }
   },
   mutations: {
