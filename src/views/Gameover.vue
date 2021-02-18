@@ -6,7 +6,7 @@
         <br><br>
         <h1 class="win-text">TANGAN KIRI WIN!</h1>
         <br>
-        <button type="button" class="btn btn-danger btn-block">EXIT</button>
+        <button type="button" class="btn btn-danger btn-block" @click="endGame">EXIT</button>
       </div>
     </div>
   </div>
@@ -14,7 +14,14 @@
 
 <script>
 export default {
-  name: 'GameOver'
+  name: 'GameOver',
+  methods: {
+    endGame () {
+      console.log('tombol endgame di click')
+      this.$socket.emit('endGame')
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 
