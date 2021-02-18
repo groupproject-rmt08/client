@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img src="https://i.imgur.com/Cy1jt7t.png" class="rope-image">
+    <img src="https://i.imgur.com/Cy1jt7t.png" class="rope-image" :style="styleObject">
     <div class="d-flex justify-content-between">
       <a href="#">
         <img src="http://assets.stickpng.com/images/5895d315cba9841eabab607e.png" class="mash-button-left" @click.prevent="clickLeftButton">
@@ -25,7 +25,7 @@ export default {
       score2: 0
     }
   },
-   /* INI DITARO PAS GAMENYA KELAR, SEBELUM THIS.$ROUTER.PUSH('/gameover')
+  /* INI DITARO PAS GAMENYA KELAR, SEBELUM THIS.$ROUTER.PUSH('/gameover')
     const gameOverSound = new Audio(GameOverSound)
     gameOverSound.play()
   */
@@ -33,10 +33,12 @@ export default {
     clickLeftButton () {
       const buttonSound = new Audio(ButtonSound)
       buttonSound.play()
+      this.mash1()
     },
     clickRightButton () {
       const buttonSound = new Audio(ButtonSound)
       buttonSound.play()
+      this.mash2()
     },
     countMash () {
       setTimeout(() => {
