@@ -18,10 +18,10 @@ export default new Vuex.Store({
       user2: '',
       point2: 0,
       gameState: false,
+      userId: '',
+      team: '',
       difference: 0,
       winner: '',
-      userId: '',
-      team: ''
     }
   },
   mutations: {
