@@ -19,7 +19,13 @@ import ButtonSound from '../audio/Blop-Mark_DiAngelo-79054334.mp3'
   */
 export default {
   name: 'Home',
-  /* INI DITARO PAS GAMENYA KELAR, SEBELUM THIS.$ROUTER.PUSH('/gameover')
+  data () {
+    return {
+      score1: 0,
+      score2: 0
+    }
+  },
+   /* INI DITARO PAS GAMENYA KELAR, SEBELUM THIS.$ROUTER.PUSH('/gameover')
     const gameOverSound = new Audio(GameOverSound)
     gameOverSound.play()
   */
@@ -31,14 +37,69 @@ export default {
     clickRightButton () {
       const buttonSound = new Audio(ButtonSound)
       buttonSound.play()
+    },
+    countMash () {
+      setTimeout(() => {
+        console.log('Sent!!!')
+        this.$store.dispatch('enableCount', false)
+        this.sendScoreToServer()
+      }, 2000)
+    },
+    enableCount (input) {
+      this.counting = input
+    },
+    sendScoreToServer () {
+      const score = (this.team === 'team 1') ? this.score1 : this.score2
+      console.log(score)
+      this.$socket.emit('sendScoreToServer', { score, team: this.team })
+      this.score1 = 0
+      this.score2 = 0
+    },
+    mash1 () {
+      this.score1 += 1
+    },
+    mash2 () {
+      this.score2 += 1
     }
+  },
+  computed: {
+    counting () {
+      return this.$store.state.counting
+    },
+    team () {
+      return this.$store.state.team
+    },
+    winner () {
+      return this.$store.state.stateTeam.winner
+    },
+    difference () {
+      return -(this.$store.state.stateTeam.difference) * 3
+    },
+    styleObject () {
+      return `margin-left:${this.difference}px;`
+    }
+  },
+  watch: {
+    winner () {
+      console.log('Game Over!')
+      this.$router.push('/gameover')
+    },
+    counting (newValue, oldValue) {
+      if (newValue === true) {
+        console.log(this.difference)
+        console.log('Recount!')
+        this.countMash()
+      }
+    }
+  },
+  created () {
+    this.countMash()
   }
 }
 </script>
 
 <style scoped>
   .rope-image {
-    margin-left: 0px;
     width: 100%;
   }
 

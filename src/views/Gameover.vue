@@ -4,7 +4,7 @@
       <div class="card-body">
         <img src="https://cdn1.iconfinder.com/data/icons/video-game-14/48/video_game_pixel_perfect_icons_25-game-over-512.png" class="card-img-top" alt="...">
         <br><br>
-        <h1 class="win-text">TANGAN KIRI WIN!</h1>
+        <h1 class="win-text">{{winner}}</h1>
         <br>
         <button type="button" class="btn btn-danger btn-block" @click="endGame">EXIT</button>
       </div>
@@ -22,6 +22,11 @@ export default {
       console.log('tombol endgame di click')
       this.$socket.emit('endGame')
       this.$router.push('/')
+    }
+  },
+  computed: {
+    winner () {
+      return this.$store.state.stateTeam.winner
     }
   }
 }
