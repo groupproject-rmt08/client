@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     winner () {
-      return this.$store.state.stateTeam.winner
+      return (this.$store.state.stateTeam.winner === 'team 1') ? 'TANGAN KIRI' : 'TANGAN KANAN'
     }
   }
 }
