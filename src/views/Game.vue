@@ -1,21 +1,13 @@
 <template>
   <div class="home">
-    <img src="https://i.imgur.com/Cy1jt7t.png" class="rope-image" :style="styleObject">
-    <a href="#" @click.prevent="mash1">
-      <img src="http://assets.stickpng.com/images/5895d315cba9841eabab607e.png" class="mash-button-left">
-    </a>
-    <div>
-      <p>
-        {{score1}}
-      </p>
-    </div>
-    <a href="#" @click.prevent="mash2">
-      <img src="http://assets.stickpng.com/images/5895d315cba9841eabab607e.png" class="mash-button-right">
-    </a>
-    <div>
-      <p>
-        {{score2}}
-      </p>
+    <img src="https://i.imgur.com/Cy1jt7t.png" class="rope-image">
+    <div class="d-flex justify-content-between">
+      <a href="#">
+        <img src="http://assets.stickpng.com/images/5895d315cba9841eabab607e.png" class="mash-button-left" @click.prevent="clickLeftButton">
+      </a>
+      <a href="#">
+        <img src="http://assets.stickpng.com/images/5895d315cba9841eabab607e.png" class="mash-button-right" @click.prevent="clickRightButton">
+      </a>
     </div>
   </div>
 </template>
@@ -29,7 +21,19 @@ export default {
       score2: 0
     }
   },
+   /* INI DITARO PAS GAMENYA KELAR, SEBELUM THIS.$ROUTER.PUSH('/gameover')
+    const gameOverSound = new Audio(GameOverSound)
+    gameOverSound.play()
+  */
   methods: {
+    clickLeftButton () {
+      const buttonSound = new Audio(ButtonSound)
+      buttonSound.play()
+    },
+    clickRightButton () {
+      const buttonSound = new Audio(ButtonSound)
+      buttonSound.play()
+    },
     countMash () {
       setTimeout(() => {
         console.log('Sent!!!')

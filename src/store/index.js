@@ -19,7 +19,9 @@ export default new Vuex.Store({
       point2: 0,
       gameState: false,
       difference: 0,
-      winner: ''
+      winner: '',
+      userId: '',
+      team: ''
     }
   },
   mutations: {
