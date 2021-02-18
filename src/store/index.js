@@ -21,7 +21,7 @@ export default new Vuex.Store({
       userId: '',
       team: '',
       difference: 0,
-      winner: '',
+      winner: ''
     }
   },
   mutations: {

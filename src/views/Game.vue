@@ -13,6 +13,10 @@
 </template>
 
 <script>
+import ButtonSound from '../audio/Blop-Mark_DiAngelo-79054334.mp3'
+/* INI DITARO PAS GAMENYA KELAR
+    import GameOverSound from '../audio/Ta_Da-SoundBible.com-1884170640.mp3'
+  */
 export default {
   name: 'Home',
   data () {
@@ -102,12 +106,10 @@ export default {
   .mash-button-left {
     width: 150px;
     margin-left: 150px;
-    float: left;
   }
 
   .mash-button-right {
     width: 150px;
     margin-right: 150px;
-    float: right;
   }
 </style>
