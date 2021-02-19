@@ -68,6 +68,7 @@ export default {
           }, 1300)
         } else {
           console.log('GAME START')
+          this.$store.dispatch('setGameState', true)
           this.$socket.emit('startGame')
           this.$router.push('/game')
         }
@@ -105,6 +106,10 @@ export default {
     team2Ready () {
       this.checkStart()
     }
+  },
+  created () {
+    this.$store.dispatch('setTeam', '')
+    this.$store.dispatch('enableCount', true)
   }
 }
 </script>

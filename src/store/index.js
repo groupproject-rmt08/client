@@ -58,6 +58,9 @@ export default new Vuex.Store({
     },
     setStateTeam (state, payload) {
       state.stateTeam = payload
+    },
+    setGameState (state, payload) {
+      state.stateTeam.gameState = payload
     }
   },
   actions: {
@@ -116,6 +119,12 @@ export default new Vuex.Store({
     },
     enableCount (context, payload) {
       context.commit('enableCount', payload)
+    },
+    setGameState (context, payload) {
+      context.commit('setGameState', payload)
+    },
+    setTeam (context, payload) {
+      context.commit('setTeam', payload)
     }
   },
   modules: {

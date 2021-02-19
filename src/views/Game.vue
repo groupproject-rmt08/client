@@ -14,21 +14,18 @@
 
 <script>
 import ButtonSound from '../audio/Blop-Mark_DiAngelo-79054334.mp3'
-/* INI DITARO PAS GAMENYA KELAR
-    import GameOverSound from '../audio/Ta_Da-SoundBible.com-1884170640.mp3'
-  */
+import GameOverSound from '../audio/Ta_Da-SoundBible.com-1884170640.mp3'
+import GameSound from '../audio/happytreefriendstheme.mp3'
+
 export default {
   name: 'Home',
   data () {
     return {
       score1: 0,
-      score2: 0
+      score2: 0,
+      gameSound: null
     }
   },
-  /* INI DITARO PAS GAMENYA KELAR, SEBELUM THIS.$ROUTER.PUSH('/gameover')
-    const gameOverSound = new Audio(GameOverSound)
-    gameOverSound.play()
-  */
   methods: {
     clickLeftButton () {
       const buttonSound = new Audio(ButtonSound)
@@ -84,6 +81,9 @@ export default {
   watch: {
     winner () {
       console.log('Game Over!')
+      this.gameSound.pause()
+      const gameOverSound = new Audio(GameOverSound)
+      gameOverSound.play()
       this.$router.push('/gameover')
     },
     counting (newValue, oldValue) {
@@ -96,6 +96,9 @@ export default {
   },
   created () {
     this.countMash()
+    this.gameSound = new Audio(GameSound)
+    this.gameSound.volume = 0.5
+    this.gameSound.play()
   }
 }
 </script>
